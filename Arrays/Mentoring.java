@@ -1,44 +1,43 @@
-package Arrays;
+
 import java.util.*;
-public class  Mentoring{
-    public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int M = sc.nextInt();
-        int[][] arr = new int[M][N];
-        for (int i = 0; i < M; i++) {
-            for (int j = 0; j < N; j++)
-                arr[i][j] = sc.nextInt();
-        }
-        System.out.println(solution(arr, N,M));
-    }
 
-    public static int solution(int[][] arr, int n, int m) {
-        int ans = 0;
-        int cmp = 0;
-        int flag = 0;
+public class Mentoring {
+    public static void main(String[] args) {
+        Scanner kb = new Scanner(System.in);
+        int n = kb.nextInt();
+        int m = kb.nextInt();
+        int[][] arr = new int[m][n];
         for (int i = 0; i < m; i++) {
-            int init = arr[0][i];
-            for (int j = i+1; j < n; j++) {
-                
-                for (int k = 1; k < m; k++) {
-                    flag = 0;
-                    for (int r = 0; r < n; r++) {
-                        if (init == arr[k][r]) {
-                            flag = 1;
-                        }
-                        if (flag == 1 && arr[k][r] == arr[i][j]) {
-                            ans++;
-                            flag = 0;
-                        }
+            for (int j = 0; j < n; j++) {
+                arr[i][j] = kb.nextInt();
+            }
+        }
+        System.out.print(solution(n, m, arr));
+    }
+    public static int solution(int n, int m, int[][] arr) {
+        int answer = 0;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                int cnt = 0;
+                for (int k = 0; k < m; k++) {
+                    int pi = 0, pj = 0;
+                    for (int s = 0; s < n; s++) {
+                        if (arr[k][s] == i)
+                            pi = s;
+                        if (arr[k][s] == j)
+                            pj = s;
                     }
-                    if(flag==1)
-                        break;
-
+                    if (pi < pj)
+                        cnt++;
+                }
+                if (cnt == m) {
+                    answer++;
+                    // System.out.println(i+" "+j);
                 }
             }
-            
         }
-        return ans;
+        return answer;
     }
+
+
 }
