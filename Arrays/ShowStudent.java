@@ -11,15 +11,14 @@ public class  ShowStudent{
     }
 
     public static int solution(int[] arr) {
-        int ans = 0;
-        int cnt = 0;
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (arr[i] <= arr[i + 1])
+        int cnt = 1;
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (max < arr[i]) {
                 cnt++;
-            else
-                cnt = 0;
-            ans = Math.max(ans, cnt);
+                max = arr[i];
+            }
         }
-        return ans+1;
+        return cnt;
     }
 }
