@@ -42,6 +42,8 @@ public class ParenthesisTransition {
             if (leftCnt == rightCnt) {
                 uu = v.substring(0, i + 1);
                 vv = v.substring(i + 1, v.length());
+
+                
                 if (uu.length() > 0 && isRight(uu)) {
                     uu = uu + recursive("", vv);
                     return uu;

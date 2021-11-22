@@ -1,4 +1,3 @@
-package KakaoBlindRecruit;
 
 import java.util.*;
 
